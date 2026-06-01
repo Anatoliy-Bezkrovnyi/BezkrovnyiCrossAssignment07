@@ -1,6 +1,6 @@
 import * as React from 'react';
 
-import { createStackNavigator } from '@react-navigation/stack';
+import { createStackNavigator, CardStyleInterpolators } from '@react-navigation/stack';
 import HomeScreen from './screens/HomeScreen/HomeScreen';
 import OrderDetailsScreen from './screens/OrderDetailsScreen/OrderDetailsScreen';
 
@@ -9,7 +9,12 @@ const Stack = createStackNavigator();
 const AgencyStack = () => {
   return (
     
-      <Stack.Navigator initialRouteName="Home">
+    <Stack.Navigator
+      initialRouteName="Home"
+      screenOptions={{
+        animationEnabled: true,
+        cardStyleInterpolator: CardStyleInterpolators.forHorizontalIOS,
+      }}>
         <Stack.Screen
           name="Home"
           component={HomeScreen}

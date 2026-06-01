@@ -1,26 +1,31 @@
 import { StyleSheet } from 'react-native';
 
 const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#1e1e1e', // Твій темний фон програми
+  container: { 
+    flex: 1 
   },
-  center: {
-    flex: 1,
-    justifyContent: 'center',
-    alignItems: 'center',
-    backgroundColor: '#1e1e1e',
+  center: { 
+    flex: 1, 
+    justifyContent: 'center', 
+    alignItems: 'center' 
   },
-  errorText: {
-    color: '#ff6b6b',
-    fontSize: 16,
+  
+  lightBg: { 
+    backgroundColor: '#ffffff' 
   },
-  listContent: {
-    padding: 16,
-    paddingBottom: 30,
+  darkBg: { 
+    backgroundColor: '#1e1e1e' 
   },
-  separator: {
-    height: 12,
+  errorText: { 
+    color: '#ff6b6b', 
+    fontSize: 16 
+  },
+  listContent: { 
+    padding: 16, 
+    paddingBottom: 30 
+  },
+  separator: { 
+    height: 12 
   },
 });
 

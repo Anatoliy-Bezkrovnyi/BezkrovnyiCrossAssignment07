@@ -1,10 +1,16 @@
 import React from 'react';
-import { View, Text, FlatList, TouchableOpacity } from 'react-native';
+import { View, Text, FlatList, TouchableOpacity, LayoutAnimation, Platform, UIManager } from 'react-native';
 import { useSelector, useDispatch } from 'react-redux';
 import { addMessage, deleteMessage } from '../../../context/redux/messagesSlice';
 import useTheme from '../../../context/themeContext/useTheme';
 import Ionicons from 'react-native-vector-icons/Ionicons';
 import styles from './MessagesScreen.styles';
+
+if (Platform.OS === 'android') {
+  if (UIManager.setLayoutAnimationEnabledExperimental) {
+    UIManager.setLayoutAnimationEnabledExperimental(true);
+  }
+}
 
 export default function MessagesScreen() {
   const { theme } = useTheme();
@@ -24,7 +30,13 @@ export default function MessagesScreen() {
 
   const handleAddMessage = () => {
     const randomText = templates[Math.floor(Math.random() * templates.length)];
+    LayoutAnimation.configureNext(LayoutAnimation.Presets.easeInEaseOut);
     dispatch(addMessage(randomText));
+  };
+
+  const handleDeleteMessage = (id) => {    
+    LayoutAnimation.configureNext(LayoutAnimation.Presets.spring);    
+    dispatch(deleteMessage(id));
   };
 
   return (
@@ -50,7 +62,7 @@ export default function MessagesScreen() {
             
             <TouchableOpacity 
               style={styles.deleteButton} 
-              onPress={() => dispatch(deleteMessage(item.id))}
+              onPress={() => handleDeleteMessage(item.id)}
             >
               <Ionicons name="trash-outline" size={18} color="#ff6b6b" />
             </TouchableOpacity>

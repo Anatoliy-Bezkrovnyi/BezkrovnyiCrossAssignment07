@@ -19,6 +19,8 @@ const TabMenu = () => {
   return (
     <NavigationContainer>
       <Tab.Navigator screenOptions={({ route }) => ({
+
+          animation: 'fade',
           tabBarIcon: ({ focused, color, size }) => {
             let iconName = '';
             if (route.name === 'Home') {
